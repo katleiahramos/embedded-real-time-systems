@@ -52,8 +52,14 @@ def run():
             motor_direction = input('select motor direction a=anticlockwise, c=clockwise or q=exit: ')
             #check for exit
             if(motor_direction == 'q'):
-                print('motor stopped')
-                sys.exit(0)
+                stop()
+
+def stop():
+    print('motor stopped')
+    # Put pins back to low
+    GPIO.output(motor_channel, (GPIO.LOW,GPIO.LOW,GPIO.LOW,GPIO.LOW))
+    # Exit system
+    sys.exit(0)
 
 def main():
     setup()
